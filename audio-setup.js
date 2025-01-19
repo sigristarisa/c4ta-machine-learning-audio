@@ -12,7 +12,7 @@ function setupAudio() {
   mic = new p5.AudioIn();
   mic.start();
 
-  fftRaw = new p5.FFT(0.75, 512);
+  fftRaw = new p5.FFT(0.75, 1024);
   peakDetect = new p5.PeakDetect(20, 20000, 0.15);
   fftRaw.setInput(mic);
 }
