@@ -5,6 +5,7 @@ let amp = 0.0;
 let ampEase = 0.0;
 let peakDetect = 0;
 let mic;
+let fftAvgVal;
 
 function setupAudio() {
   userStartAudio();
@@ -23,6 +24,7 @@ function updateAudio() {
   ampEase = ease(amp, ampEase, 0.075);
   waveform = fftRaw.waveform();
   fftAvg = fftRaw.logAverages(fftRaw.getOctaveBands(24));
+  fftAvgVal = fftAvg.reduce((a, b) => a + b, 0) / fftAvg.length;
   peakDetect.update(fftRaw);
 }
 
